@@ -16,6 +16,7 @@
     <a href="{{ route('categorias.create') }}" class="btn btn-info me-2">+ Adicionar Categoria</a>
     <a href="{{ route('unidades.create') }}" class="btn btn-secondary">+ Adicionar Unidade de Medida</a>
     <a href="{{ route('produtos.create') }}" class="btn btn-primary me-2">+ Adicionar Produto</a>
+    <a href="{{ route('baixas.create') }}" class="btn btn-dark">Baixa no Estoque</a>
 </div>
 
 

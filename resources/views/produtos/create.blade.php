@@ -9,7 +9,17 @@
     <form action="{{ route('produtos.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <div class="mb-4"> 
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <div class="mb-4">
             <label for="nome" class="form-label">Nome</label>
             <input type="text" class="form-control" id="nome" name="nome" required>
         </div>
@@ -51,6 +61,20 @@
             <label for="descricao" class="form-label">Descrição</label>
             <textarea class="form-control" id="descricao" name="descricao" rows="4" required></textarea>
         </div>
+
+        <div class="mb-4">
+            <label for="valor_unitario" class="form-label">Valor Unitário</label>
+            <input type="text" class="form-control" id="valor_unitario" name="valor_unitario" required>
+        </div>
+
+        <script>
+            document.getElementById('valor_unitario').addEventListener('input', function (event) {
+                let value = event.target.value.replace(/[^\d,]/g, '').replace(',', '.');
+                value = parseFloat(value).toFixed(2);
+                event.target.value = value.replace('.', ',');
+            });
+        </script>
+
 
         <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-primary">Salvar</button>
