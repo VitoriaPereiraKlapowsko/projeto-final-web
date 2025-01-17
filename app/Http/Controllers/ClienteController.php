@@ -6,17 +6,23 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $nome = $request->query('nome');
-
+    
         // Busca clientes pelo nome (se existir um filtro)
         if ($nome) {
             $clientes = Cliente::where('nome', 'like', '%' . $nome . '%')->get();
         } else {
             $clientes = Cliente::all(); // Sem filtro, busca tudo
         }
-        return view('clientes.index', compact('clientes'));
+    
+        // Verifica se a busca retornou resultados
+        $mensagem = $clientes->isEmpty() ? 'Nenhum cliente encontrado.' : '';
+    
+        return view('clientes.index', compact('clientes', 'mensagem'));
     }
+    
 
     public function create(){
         return view('clientes.create');
@@ -26,8 +32,8 @@ class ClienteController extends Controller
     $request->validate([
         'nome' => 'required|string|max:255',
         'telefone' => 'required|string|max:15',
-        'cpf' => 'required|string|size:11|unique:clientes,cpf',
-        'email' => 'required|email|max:255|unique:clientes,email',
+        'cpf' => 'required|unique:clientes,cpf',  
+        'email' => 'required|email|unique:clientes,email', 
         'cep' => 'required|string|size:8',
         'numero' => 'required|string',
         'rua' => 'required|string',

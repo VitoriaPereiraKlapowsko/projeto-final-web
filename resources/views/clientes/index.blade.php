@@ -14,8 +14,8 @@
 <div class="d-flex justify-content-start align-items-center mb-4">
     <a href="{{ route('clientes.create') }}" class="btn btn-success me-2">+ Novo Cliente</a>
     <a href="{{ route('categorias.create') }}" class="btn btn-info me-2">+ Adicionar Categoria</a>
-    <a href="{{ route('unidades.create') }}" class="btn btn-secondary">+ Adicionar Unidade de Medida</a>
-    <a href="{{ route('produtos.create') }}" class="btn btn-primary me-2">+ Adicionar Produto</a>
+    <a href="{{ route('unidades.create') }}" class="btn btn-secondary me-3">+ Adicionar Unidade de Medida</a>
+    <a href="{{ route('produtos.create') }}" class="btn btn-primary me-3">+ Adicionar Produto</a>
     <a href="{{ route('baixas.create') }}" class="btn btn-dark">Baixa no Estoque</a>
 </div>
 

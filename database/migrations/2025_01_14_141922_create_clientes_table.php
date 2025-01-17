@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('telefone');
-            $table->string('cpf')->unique();
+            $table->string('cpf')->unique(); //atendendo o pedido de ser unico
             $table->string('email')->unique();
             $table->timestamps();
         });

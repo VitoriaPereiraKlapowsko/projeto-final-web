@@ -64,16 +64,8 @@
 
         <div class="mb-4">
             <label for="valor_unitario" class="form-label">Valor Unitário</label>
-            <input type="text" class="form-control" id="valor_unitario" name="valor_unitario" required>
+            <input type="number" step="0.01" class="form-control" id="valor_unitario" name="valor_unitario" required>
         </div>
-
-        <script>
-            document.getElementById('valor_unitario').addEventListener('input', function (event) {
-                let value = event.target.value.replace(/[^\d,]/g, '').replace(',', '.');
-                value = parseFloat(value).toFixed(2);
-                event.target.value = value.replace('.', ',');
-            });
-        </script>
 
 
         <div class="d-flex justify-content-between">

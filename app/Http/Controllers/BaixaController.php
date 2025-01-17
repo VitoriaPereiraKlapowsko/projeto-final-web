@@ -30,10 +30,10 @@ class BaixaController extends Controller
         if ($request->quantidade > $produto->estoque) {
             return back()->withErrors('Quantidade insuficiente em estoque.');
         }
-
+ // Subtrai a quantidade do estoque do produto
         $produto->estoque -= $request->quantidade;
         $produto->save();
-
+  // Calcula o valor total da baixa (quantidade * valor unitário)
         $valor_total = $request->quantidade * $produto->valor_unitario;
 
         $baixa = Baixa::create([
@@ -43,7 +43,7 @@ class BaixaController extends Controller
             'valor_total' => $valor_total,
             'data_hora' => now(),
         ]);
-
+ // Gera o QR Code com as informações da baixa (cliente, produto, quantidade e total)
         $qrCode = QrCode::size(200)->generate("Cliente: {$baixa->cliente->nome}, Produto: {$baixa->produto->nome}, Quantidade: {$baixa->quantidade}, Total: R$ {$baixa->valor_total}");
 
         return view('baixas.show', compact('baixa', 'qrCode'));

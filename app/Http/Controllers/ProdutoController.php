@@ -36,6 +36,9 @@ class ProdutoController extends Controller
             'valor_unitario' => 'required|numeric',
         ]);
     
+        // Formato do valor unitário
+        $valor_unitario = str_replace(',', '.', $request->valor_unitario);
+    
         if ($request->hasFile('caminho')) {
             $path = $request->file('caminho')->store('produtos', 'public');
         }
@@ -48,7 +51,7 @@ class ProdutoController extends Controller
             'quantidade' => $request->quantidade,
             'estoque' => $request->estoque,
             'descricao' => $request->descricao,
-            'valor_unitario' => $request->valor_unitario,
+            'valor_unitario' => $valor_unitario,
         ]);
     
         if ($produto) {
@@ -56,11 +59,10 @@ class ProdutoController extends Controller
         } else {
             \Log::error('Falha ao criar produto.');
         }
-
+    
         return redirect()->route('produtos.index');
     }
     
-
     public function edit($id)
     {
         $produto = Produto::findOrFail($id);

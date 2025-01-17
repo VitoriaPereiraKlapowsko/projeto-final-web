@@ -11,7 +11,7 @@
     <div class="mb-3">
         <label for="cliente_id" class="form-label">Cliente</label>
         <select class="form-control" id="cliente_id" name="cliente_id" required>
-            @foreach($clientes as $cliente)
+            @foreach($clientes as $cliente)<!-- Loop para exibir todos os clientes disponíveis -->
                 <option value="{{ $cliente->id }}">{{ $cliente->nome }}</option>
             @endforeach
         </select>

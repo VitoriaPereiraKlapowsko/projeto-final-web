@@ -13,7 +13,9 @@ return new class extends Migration
             $table->id(); 
             $table->string('nome');  
             $table->string('caminho'); 
+              // Criação da coluna 'unidade_de_medida_id', que é uma chave estrangeira referenciando a tabela 'unidades_de_medida'
             $table->foreignId('unidade_de_medida_id')->constrained('unidades_de_medida')->onDelete('cascade');  
+            // A opção 'onDelete('cascade')' indica que, se uma unidade de medida for excluída, todos os produtos associados a ela também serão excluídos
             $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade'); 
             $table->integer('quantidade');  
             $table->integer('estoque'); 
