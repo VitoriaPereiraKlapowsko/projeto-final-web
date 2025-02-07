@@ -16,9 +16,12 @@
     <a href="{{ route('categorias.create') }}" class="btn btn-info me-2">+ Adicionar Categoria</a>
     <a href="{{ route('unidades.create') }}" class="btn btn-secondary me-3">+ Adicionar Unidade de Medida</a>
     <a href="{{ route('produtos.create') }}" class="btn btn-primary me-3">+ Adicionar Produto</a>
-    <a href="{{ route('baixas.create') }}" class="btn btn-dark">Baixa no Estoque</a>
+    <a href="{{ route('baixas.create') }}" class="btn btn-dark me-3">Baixa no Estoque</a>
+    <a href="{{ route('relatorios.retiradas_periodo', ['periodo' => 'diario']) }}" class="btn btn-primary me-2">Retiradas por Período</a>
+    <a href="{{ route('relatorios.retiradas_por_cliente') }}" class="btn btn-warning me-2">Retiradas por Cliente</a>
+    <a href="{{ route('relatorios.produtos_sem_estoque') }}" class="btn btn-danger me-2">Produtos sem Estoque</a>
+    <a href="{{ route('relatorios.produtos_com_estoque') }}" class="btn btn-success me-2">Produtos com Estoque</a>
 </div>
-
 
 <table class="table table-striped table-hover">
     <thead class="table-dark">
