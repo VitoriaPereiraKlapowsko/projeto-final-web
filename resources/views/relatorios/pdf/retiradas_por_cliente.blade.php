@@ -22,7 +22,7 @@
             <tr>
                 <td>{{ $retirada->cliente->nome }}</td>
                 <td>{{ $retirada->produto->nome }}</td>
-                <td>{{ $retirada->produto->unidadeDeMedida->nome ?? 'Sem Unidade' }}</td>
+                <td>{{ $retirada->produto->unidadeDeMedida->abreviatura ?? 'Sem Unidade' }}</td>
                 <td>{{ $retirada->produto->categoria->nome }}</td>
                 <td>{{ $retirada->total }}</td>
                 <td>{{ \Carbon\Carbon::parse($retirada->data_retirada)->format('d/m/Y') }}</td>
@@ -31,5 +31,5 @@
         @endforeach
     </tbody>
 </table>
-
+<a href="{{ route('relatorios.retiradas_por_cliente.pdf') }}" class="btn btn-danger">Exportar PDF</a>
 @endsection

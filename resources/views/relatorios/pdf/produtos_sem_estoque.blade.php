@@ -25,5 +25,5 @@
         @endforeach
     </tbody>
 </table>
-
+<a href="{{ route('relatorios.produtos_sem_estoque.pdf') }}" class="btn btn-danger">Exportar PDF</a>
 @endsection
