@@ -1,24 +1,40 @@
-@extends('layouts.app')
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-@section('title', 'Adicionar Unidade de Medida')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Adicionar Unidade de Medida') }}
+        </h2>
+    </x-slot>
 
-@section('content')
-    <h1 class="mb-4">Adicionar Unidade de Medida</h1>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <h1 class="mb-4">Adicionar Unidade de Medida</h1>
 
-    <form action="{{ route('unidades.store') }}" method="POST">
-        @csrf
+                    <form action="{{ route('unidades.store') }}" method="POST">
+                        @csrf
 
-        <div class="mb-3">
-            <label for="abreviatura" class="form-label">Abreviatura</label>
-            <input type="text" name="abreviatura" id="abreviatura" class="form-control" required>
+                        <div class="mb-3">
+                            <label for="abreviatura" class="form-label">Abreviatura</label>
+                            <input type="text" name="abreviatura" id="abreviatura" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descricao" class="form-label">Descrição</label>
+                            <textarea name="descricao" id="descricao" class="form-control" rows="4" required></textarea>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <a href="{{ route('unidades.index') }}" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <div class="mb-3">
-            <label for="descricao" class="form-label">Descrição</label>
-            <textarea name="descricao" id="descricao" class="form-control" rows="4" required></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Salvar</button>
-        <a href="{{ route('unidades.index') }}" class="btn btn-secondary">Cancelar</a>
-    </form>
-@endsection
+    </div>
+</x-app-layout>

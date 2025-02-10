@@ -13,6 +13,7 @@ class Baixa extends Model
 
     public function cliente()
     {
+        // O método belongsTo indica que este modelo "Baixa" pertence ao modelo "Cliente"
         return $this->belongsTo(Cliente::class);
     }
 
