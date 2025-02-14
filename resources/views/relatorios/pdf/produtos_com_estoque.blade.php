@@ -21,7 +21,7 @@
                                 <th>Produto</th>
                                 <th>Unidade</th>
                                 <th>Categoria</th>
-                                <th>Quantidade</th>
+                                <th>Estoque</th>
                                 <th>% Restante em relação ao estoque inicial</th>
                             </tr>
                         </thead>
@@ -31,7 +31,7 @@
                                     <td>{{ $produto->nome }}</td>
                                     <td>{{ $produto->unidadeDeMedida->abreviatura ?? 'Sem Unidade' }}</td>
                                     <td>{{ $produto->categoria->nome }}</td>
-                                    <td>{{ $produto->quantidade }}</td>
+                                    <td>{{ $produto->estoque }}</td>
                                      <!-- umber_format formata a forma como o número vai aparecer -->
                                     <td>{{ number_format($produto->percentual, 2, ',', '.') }}%</td>
                                 </tr>

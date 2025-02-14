@@ -95,7 +95,7 @@ public function exportarProdutosSemEstoquePDF()
 public function produtosComEstoque()
 {
     $produtos = Produto::where('estoque', '>', 0)
-        ->selectRaw('id, nome, unidade_de_medida_id, categoria_id, quantidade, (quantidade / estoque) * 100 as percentual')
+        ->selectRaw('id, nome, unidade_de_medida_id, categoria_id, estoque, (estoque / quantidade) * 100 as percentual')
         ->with('unidadeDeMedida', 'categoria')
         ->get();
 
